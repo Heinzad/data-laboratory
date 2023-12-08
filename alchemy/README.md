@@ -21,3 +21,24 @@ The package versioning can be added or updated with:
 pip freeze >requirements.txt 
 ``` 
 
+# Virtual Environment 
+
+The virtual environment is setup in powershell using: 
+
+```
+python -m venv venv
+```
+
+Activate the virtual environment in PowerShell by running: 
+
+```
+venv\Scripts\Activate.ps1
+```
+
+To succeed, this may first require a change to execution policies in Power Shell: 
+
+```
+Set-ExecutionPolicy Unrestricted -Scope Process
+``` 
+
+Success is visible when the path begins witth(venv) 
