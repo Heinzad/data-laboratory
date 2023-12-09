@@ -73,7 +73,7 @@ Most settings can be imported from environmental variables for flexibility and s
 
 The SQLALCHEMY_DATABASE_URI, required by Flask, receives different values under each of these configurations, so that the application uses a different database in each environment. Each configuration tries to import the database URL from an environment variable, and when that is not available it sets a default one based on SQLite. The testing configuration defaults to an in-memory database as there is no need to store data outside of a test run. 
 
-The development and production configurations have mail server configuration options. The Config class and subclasses can define an `init_app()` class method that takes the application instance as an argument. The base Config class has an empty `init_app()` method at first, but this may change later. 
+The development and production configurations have mail server configuration options. The `Config` class and subclasses can define an `init_app()` class method that takes the application instance as an argument. The base `Config` class has an empty `init_app()` method at first, but this may change later. 
 
 The different configurations are registered in a config dictionary towards the end of the configuration script. The development configuration is registered as the default. 
 
@@ -96,6 +96,18 @@ This constructor imports most of the Flask extensions currently in use, but pass
 The application intialisation is performed in this factory function, using the `from_object()` method from the Flask configuration object, taking as an argument one of the configuration classes in _config.py_. The `init_app()` method of the selected configuration is also invoked, to enable more complex initalisation procedures. 
 
 The factory function returns the created application instance. The necessary routes and custom error page handlers are discussed in the next section. 
+
+
+## Application Blueprint
+
+A Flask _blueprint_ defines routes and error handlers that are registered with the application, and defined in the global scope.
+The blueprints are created in a subpackage of the application package: _app/main__init__.py_
+
+Blueprints are created by instantiating an object of class `Blueprint`. The two required arguments are the blueprint name and the module in which the blueprint is located. 
+
+The routes of the application are stored in _app/main/views.py_ module and error handlers in _app/main/errors.py_. They are associated with the blueprint when imported. The import sits at the end of _app/main/__init__.py_ to prevent circular dependency errors. 
+
+The blueprint is registered with the application inside the `create_app()` factory function in _app/__init__.py_
 
 
 

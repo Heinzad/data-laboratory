@@ -5,7 +5,7 @@
 """
 
 from flask import Flask
-from flask import rendender_template as f_render_template
+from flask import render_template as f_render_template
 from flask_bootstrap import Bootstrap 
 from flask_mail import Mail 
 from flask_moment import Moment 
@@ -28,5 +28,8 @@ def create_app(config_name):
     db.init_app(app)
 
     # routes and custom error pages 
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
 
     return app
