@@ -109,7 +109,7 @@ The routes of the application are stored in _app/main/views.py_ module and error
 
 The blueprint is registered with the application inside the `create_app()` factory function in _app/__init__.py_
 
-
+_Errors:_ The `app_errorhandler` decorator is used to install application-wide error handling via a blueprint. 
 
 
 # References 
