@@ -1,7 +1,7 @@
 Alchemy 
 =======
 
-A flask project exploring SQL Alchemy. Initial structure from: 
+A data laboratory experiment exploring Flask and SQL Alchemy. 
 
 
 # Overview 
@@ -9,15 +9,15 @@ A flask project exploring SQL Alchemy. Initial structure from:
 In chapter 7 of _Flask Web Development: Developing Web Applications with Python_, Miguel Grinberg (2018) sets out a way to organise a large application in packages and modules. 
 
 The structure has several top-level folders or packages: 
-* _app_ package holds the Alchemy application 
-* _migrations_ package holds database migration scripts
-* _tests_ package holds unit tests
-* _venv_ contains the python virtual environment
+* _app_ package -- holds the Alchemy application 
+* _migrations_ package -- holds database migration scripts
+* _tests_ package -- holds unit tests
+* _venv_ package -- contains the python virtual environment
 
 There are also several files in the top layer: 
-* _requirements.txt_ lists the package dependences used when generating a virtual environment
-* _config.py_ holds the configuration settings
-* _alchemy.py_ defines the Flask application instance, and other tasks for managing the application
+* _requirements.txt_ -- lists the package dependences used when generating a virtual environment
+* _config.py_ -- holds the configuration settings
+* _alchemy.py_ -- defines the Flask application instance, and other tasks for managing the application
 
 The following sections describe the setup in further detail. 
 
@@ -76,6 +76,8 @@ The SQLALCHEMY_DATABASE_URI, required by Flask, receives different values under 
 The development and production configurations have mail server configuration options. The Config class and subclasses can define an init_app() class method that takes the application instance as an argument. The base Config class has an empty init_app() method at first, but this may change later. 
 
 The different configurations are registered in a config dictionary towards the end of the configuration script. The development configuration is registered as the default. 
+
+
 
 
 
