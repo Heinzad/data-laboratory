@@ -22,7 +22,7 @@ There are also several files in the top layer:
 The following sections describe the setup in further detail. 
 
 
-# Requirements
+# Requirements File 
 
 The application includes a _requirements.txt_ file containing the package dependencies. The initial commit just used the latest version available. 
 The dependencies can be loaded in a virtual environment with: 
@@ -62,7 +62,7 @@ Success is visible when the path begins with(venv)
 
 
 
-# Configuration 
+# Configuration Package
 
 Configuration options are useful for things like using different databases in dev and test environments, for example. 
 
@@ -73,10 +73,29 @@ Most settings can be imported from environmental variables for flexibility and s
 
 The SQLALCHEMY_DATABASE_URI, required by Flask, receives different values under each of these configurations, so that the application uses a different database in each environment. Each configuration tries to import the database URL from an environment variable, and when that is not available it sets a default one based on SQLite. The testing configuration defaults to an in-memory database as there is no need to store data outside of a test run. 
 
-The development and production configurations have mail server configuration options. The Config class and subclasses can define an init_app() class method that takes the application instance as an argument. The base Config class has an empty init_app() method at first, but this may change later. 
+The development and production configurations have mail server configuration options. The Config class and subclasses can define an `init_app()` class method that takes the application instance as an argument. The base Config class has an empty `init_app()` method at first, but this may change later. 
 
 The different configurations are registered in a config dictionary towards the end of the configuration script. The development configuration is registered as the default. 
 
+
+# Application Package
+
+The application package or _app_ folder contains the application code. Its modules include: Templates, static files, database models and email support files. 
+
+## Application Package Constructor
+
+A factory function is invoked from a script to create the application. This gives the ability to create multiple application instances, such as for multiple environments. 
+
+The application factory function is defined in the application package constructor _app/__init__.py_  
+
+This constructor imports most of the Flask extensions currently in use, but passes no arguments to their constructors when creating them so they are uninitialised.  
+* The `create_app()` function is the application factory, utilising a given configuration name for the application.  
+* The `from_object()` imports configuration settings directly into the app from a given configuration class. 
+* The `init_app()` completes their initialisation when called. 
+
+The application intialisation is performed in this factory function, using the `from_object()` method from the Flask configuration object, taking as an argument one of the configuration classes in _config.py_. The `init_app()` method of the selected configuration is also invoked, to enable more complex initalisation procedures. 
+
+The factory function returns the created application instance. The necessary routes and custom error page handlers are discussed in the next section. 
 
 
 
@@ -84,3 +103,9 @@ The different configurations are registered in a config dictionary towards the e
 # References 
 
 Miguel Grinberg (2018). Flask Web Development: Developing Web Applications with Python. O'Reilly.  
+
+
+
+© Adam Heinz 
+
+9 December 2023 
