@@ -151,6 +151,13 @@ The `tearDown()` method removes the database and application context.
 
 An empty _tests/__init__.py_ module makes the test folder a proper package
 
+A custom command to run the unit tests is added to _alchemy.py_ script. 
+
+The unit tests can be executed in the virtual environment by: 
+
+```
+flask test 
+```
 
 
 # References 
