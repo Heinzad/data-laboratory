@@ -3,7 +3,23 @@ Alchemy
 
 A flask project exploring SQL Alchemy. Initial structure from: 
 
-Miguel Grinberg (2018). Flask Web Development: Developing Web Applications with Python. O'Reilly. 
+
+# Overview 
+
+In chapter 7 of _Flask Web Development: Developing Web Applications with Python_, Miguel Grinberg (2018) sets out a way to organise a large application in packages and modules. 
+
+The structure has several top-level folders or packages: 
+* _app_ package holds the Alchemy application 
+* _migrations_ package holds database migration scripts
+* _tests_ package holds unit tests
+* _venv_ contains the python virtual environment
+
+There are also several files in the top layer: 
+* _requirements.txt_ lists the package dependences used when generating a virtual environment
+* _config.py_ holds the configuration settings
+* _alchemy.py_ defines the Flask application instance, and other tasks for managing the application
+
+The following sections describe the setup in further detail. 
 
 
 # Requirements
@@ -20,6 +36,7 @@ The package versioning can be added or updated with:
 ```
 pip freeze >requirements.txt 
 ``` 
+
 
 # Virtual Environment 
 
@@ -60,3 +77,8 @@ The development and production configurations have mail server configuration opt
 
 The different configurations are registered in a config dictionary towards the end of the configuration script. The development configuration is registered as the default. 
 
+
+
+# References 
+
+Miguel Grinberg (2018). Flask Web Development: Developing Web Applications with Python. O'Reilly.  
