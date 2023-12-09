@@ -116,6 +116,20 @@ With blueprints, Flask applies a namespace to all the endpoints defined in a blu
 The namespace is the name of the blueprint (the first argument to the `Blueprint` constructor) and is separated from the endpoint name with a dot. The `index()` view function is registered with the endpoint name `main.index` and its URL is obtained by `url_for('main.index')`.  
 Redirects within a blueprint can use the short form of `url_for('.index')`. 
 
+Form objects are stored inside the blueprint in _app/main/forms.py_ module. 
+
+## Application Script
+
+The _flaks.py_ module defines the application instance. It sits in the top-level directory.  
+The script begins by creating an application. If given, the configuration is taken from the environmental variable `FLASK_CONFIG`; if not, the default is used.  
+
+Within the virtual environment, the `FLASK_APP` environment variable needs to be set so that the flask command can locate the application instance. It also helps to set `FLASK_DEBUG=1`.  
+
+```
+set FLASK_APP=alchemy.py
+set FLASK_DEBUG=1
+```
+
 
 # References 
 
