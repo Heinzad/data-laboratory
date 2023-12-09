@@ -109,7 +109,12 @@ The routes of the application are stored in _app/main/views.py_ module and error
 
 The blueprint is registered with the application inside the `create_app()` factory function in _app/__init__.py_
 
-_Errors:_ The `app_errorhandler` decorator is used to install application-wide error handling via a blueprint. 
+_Error Handlers:_ The `main.app_errorhandler` decorator is used to install application-wide error handling via a blueprint. 
+
+_Route:_ The route of the application to be updated. The route decorator comes from `main.route`.  
+With blueprints, Flask applies a namespace to all the endpoints defined in a blueprint, so that multiple blueprints can define view functions with the same endpoint names without collisions.  
+The namespace is the name of the blueprint (the first argument to the `Blueprint` constructor) and is separated from the endpoint name with a dot. The `index()` view function is registered with the endpoint name `main.index` and its URL is obtained by `url_for('main.index')`.  
+Redirects within a blueprint can use the short form of `url_for('.index')`. 
 
 
 # References 
