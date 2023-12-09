@@ -125,10 +125,32 @@ The script begins by creating an application. If given, the configuration is tak
 
 Within the virtual environment, the `FLASK_APP` environment variable needs to be set so that the flask command can locate the application instance. It also helps to set `FLASK_DEBUG=1`.  
 
+In VS Code powershell: 
 ```
-set FLASK_APP=alchemy.py
-set FLASK_DEBUG=1
+$env:FLASK_APP = "alchemy.py"
 ```
+then: 
+```
+python -m flask run
+```
+
+the flask web server can be found at: http://localhost:5000/
+
+
+# Unit Tests 
+
+The tests are written with the `unittest` package from the Python library. The `setUp()` and `tearDown()` methods run before and after each test. any methods that have a name that begins with `test_` are executed as tests. 
+
+The `setUp()` method tries to create an environment for the test that is close to that of a running application. It: 
+* Creates an application configured for testing and activates its context, so that tests access `current_app` like regular requests. 
+* Creates a new database for the tests using Flask-SQLAlchemy's `create_all()` method. 
+
+The first test verifies the application instance exists. The second test verifies the application is running under the testing configuration.
+
+The `tearDown()` method removes the database and application context. 
+
+An empty _tests/__init__.py_ module makes the test folder a proper package
+
 
 
 # References 
