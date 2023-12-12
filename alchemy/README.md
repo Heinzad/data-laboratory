@@ -43,13 +43,13 @@ pip freeze >requirements.txt
 The virtual environment is setup in powershell using: 
 
 ```
-python -m venv venv
+python -m venv alchemy
 ```
 
 Activate the virtual environment in PowerShell by running: 
 
 ```
-venv\Scripts\Activate.ps1
+alchemy\Scripts\Activate.ps1
 ```
 
 To succeed, this may first require a change to execution policies in Power Shell: 
@@ -60,6 +60,10 @@ Set-ExecutionPolicy Unrestricted -Scope Process
 
 Success is visible when the path begins with(venv) 
 
+When working in VS code, pylance may not recognise the packages in the virtual environment. It may be helpful to relaunch it from the virtual environment by entering into the terminal: 
+```
+code .
+```
 
 
 # Configuration Package
@@ -128,6 +132,7 @@ Within the virtual environment, the `FLASK_APP` environment variable needs to be
 In VS Code powershell: 
 ```
 $env:FLASK_APP = "alchemy.py"
+$env:FLASK_DEBUG = "1"
 ```
 then: 
 ```
