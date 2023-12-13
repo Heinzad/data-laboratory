@@ -43,27 +43,32 @@ pip freeze >requirements.txt
 The virtual environment is setup in powershell using: 
 
 ```
-python -m venv alchemy
+python -m venv .venv
 ```
 
-Activate the virtual environment in PowerShell by running: 
-
-```
-alchemy\Scripts\Activate.ps1
-```
-
-To succeed, this may first require a change to execution policies in Power Shell: 
+Activating may first require a change to execution policies in Power Shell: 
 
 ```
 Set-ExecutionPolicy Unrestricted -Scope Process
 ``` 
+Activate the virtual environment in PowerShell by running: 
+```
+.venv\Scripts\Activate.ps1
+```
 
-Success is visible when the path begins with(venv) 
+Success is visible when the path begins with (.venv) 
 
 When working in VS code, pylance may not recognise the packages in the virtual environment. It may be helpful to relaunch it from the virtual environment by entering into the terminal: 
 ```
 code .
 ```
+
+The virtual environment can be deactivated in PowerShell by running: 
+```
+deactivate
+```
+
+N.B. Using the .venv naming helps target the virtual environment directory in the .gitignore file. 
 
 
 # Configuration Package
@@ -124,7 +129,7 @@ Form objects are stored inside the blueprint in _app/main/forms.py_ module.
 
 ## Application Script
 
-The _flaks.py_ module defines the application instance. It sits in the top-level directory.  
+The _alchemy.py_ module defines the application instance. It sits in the top-level directory.  
 The script begins by creating an application. If given, the configuration is taken from the environmental variable `FLASK_CONFIG`; if not, the default is used.  
 
 Within the virtual environment, the `FLASK_APP` environment variable needs to be set so that the flask command can locate the application instance. It also helps to set `FLASK_DEBUG=1`.  
@@ -140,6 +145,9 @@ python -m flask run
 ```
 
 the flask web server can be found at: http://localhost:5000/
+
+Alternatively, a .env file (masked by .gitignore) can hold the environmental variables.
+
 
 
 # Unit Tests 
@@ -168,6 +176,10 @@ flask test
 # References 
 
 Miguel Grinberg (2018). Flask Web Development: Developing Web Applications with Python. O'Reilly.  
+
+Miguel Grinberg (2018), [Flask Web Development](http://www.flaskbook.com). 
+
+Miguel Grinberg (2024). [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
 
 
 

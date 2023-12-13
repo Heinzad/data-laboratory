@@ -4,10 +4,12 @@
 -- 20231209 initial commit: Adam Heinz 
 """ 
 
-from os import path as os_path
-from os import environ as os_environ
-
+from os import path as os_path, environ as os_environ 
 basedir = os_path.abspath(os_path.dirname(__file__))
+
+# load environmental configurations 
+from dotenv import load_dotenv 
+load_dotenv(os_path.join(basedir, '.env'))
 
 
 class Config:
@@ -21,7 +23,7 @@ class Config:
     MAIL_PASSWORD = os_environ.get('MAIL_PASSWORD')
     ALCHEMY_MAIL_SUBJECT_PREFIX = '[Alchemy]'
     ALCHEMY_MAIL_SENDER = 'Alchemy Admin <alchemy@example.com>'
-    ALCHEMY_ADMIN = os_environ.get('ALCHEMY_ADMIN')
+    ALCHEMY_ADMIN = os_environ.get('APP_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
