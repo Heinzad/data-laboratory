@@ -12,7 +12,7 @@ basedir = os_path.abspath(os_path.dirname(__file__))
 
 class Config:
     """Base configurations super class"""
-    SECRET_KEY = os_environ.get('SECRET_KEY') or 'D0n`t~kommit~2~sauce~k0ntr0l-y`all'
+    SECRET_KEY = os_environ.get('SECRET_KEY') 
     MAIL_SERVER = os_environ.get('MAIL_SERVER', 'smtp.googlemail.com')
     MAIL_PORT = int(os_environ.get('MAIL_PORT', '587'))
     MAIL_USE_TLS = os_environ.get('MAIL_USE_TLS', 'true').lower() in \
