@@ -1,0 +1,60 @@
+
+# Quickstart
+
+Navigate to directory: 
+
+```
+cd microblog 
+```
+
+## Virtual Environment 
+
+Setup virtual environment: 
+
+```
+python -m venv .venv
+```
+
+
+Apply a Powershell execution policy: 
+
+```
+Set-ExecutionPolicy Unrestricted -Scope Process
+``` 
+
+Activate the virtual environment in PowerShell by running: 
+
+```
+.venv\Scripts\Activate.ps1
+```
+
+Optional: relaunch from inside the virtual environment: 
+```
+code .
+```
+
+install the required packages inside the virtual environment: 
+```
+pip install -r requirements.txt 
+``` 
+
+## Database 
+
+apply all migration scripts to the database: 
+```
+flask db upgrade
+```
+
+
+## Server 
+```
+flask run
+```
+
+
+## Exeunt 
+
+When leaving, the virtual environment can be deactivated in PowerShell by running: 
+```
+deactivate
+```
